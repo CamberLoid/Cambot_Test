@@ -1,8 +1,10 @@
 {
     "python.linting.pylintEnabled": true,
     "python.autoComplete.extraPaths": [
-        "C:/Users/duodu/Documents/Cambot_Test/telepot-master",
-        "C:/Users/duodu/Documents/Cambot_Test/telepot-master/cambot",
-        "C:/Users/duodu/Documents/Cambot_Test/telepot-master/telepot-master",
-        "C:/Users/duodu/Documents/Cambot_Test/telepot-master/telepot-master/telepot"]
+        ".",
+        "./telepot",
+        "./telepot-master",
+        "./cambot"
+    ],
+    "restructuredtext.confPath": "${workspaceFolder}/telepot-master/doc"
 }

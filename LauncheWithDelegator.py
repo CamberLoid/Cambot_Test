@@ -11,7 +11,7 @@
 """
 """ 1.   使用的模组
          telepot.Bot, 
-         ~~暂时没有delegate 因为看不懂~~ delegate -> 委托，针对某用户/群组/频道
+         <TODO>*这个脚本是专门给delegator用的*
     2.   我想让这个bot做什么？
     2.1. 合唱脑力 /brainpower 或者 自动合唱
     2.2. MUG杀人登记+图像处理库 +
@@ -27,46 +27,30 @@ import sys
 #初始化导入
 #sys.path.append('.\\telepot-master')
 #sys.path.append('.')
-import telepot,telepot.aio,telepot.namedtuple
+import telepot
+import telepot.aio
 from telepot.aio.loop import MessageLoop
 import time,threading,asyncio
-import cambot
-from cambot.utils import Logger
+from cambot import *
+import Logger
 
 def theWorldTheEndingTheUltimateAnswer():
-    return 16
-    
+    pass
+
 def importmod(direction):
     """
     <TODO>
     """
     pass
 
-"""
-    dict:session
-    预期配对: id : instance 
-    大概只会在脑力上面用到=v=
-"""
-session = {}
-"""
-    dict:activatedCommands
-    str:command : func
-"""
-activatedCommands = {}
 def messagehandler(msg):
     content_type, chat_type, chat_id = telepot.glance(msg)
-    _msg = telepot.namedtuple.Message(**msg)
-    if _msg.text is not None:
-        if _msg.text[0] is '/':
-            command = _msg.text[1:].split(' ')
-            
     pass
 
 importmod(direction="cambot")
 token = sys.argv[1:]
 if len(token) is 0:
-    token.append("714345613:AAGbEL0LhzXakqfqkmEyggvMOO8ZVHwT87g") 
-    #个人测试用token,因为已经Expired所以保留,要用的话自己删掉
+    token.append("714345613:AAGbEL0LhzXakqfqkmEyggvMOO8ZVHwT87g") #个人测试用token,发布时移除
 bot = []
 for i in token:
     bot.append(telepot.aio.Bot(i))

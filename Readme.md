@@ -4,7 +4,7 @@
 
 Bot在建，还没写完
 
-不想写
+总之就是不太想写
 
 大概的逻辑：
 
@@ -32,3 +32,5 @@ private -> `/brainpower` 返回 `单人脑力多没有意思 去群组里发/bri
            对每一个TelegramID建立{ID}.json
         -> `/cast` 以FW+Comment的形式 for i in TelegramID.groupid: sendMessage()
 ```
+
+之后尽量放出Document和release

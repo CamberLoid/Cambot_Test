@@ -4,7 +4,7 @@
     合唱脑力啊
 """
 import sys
-from Logger import *
+from cambot.utils import Logger
 
 class Chronical(object):
     """
@@ -20,7 +20,13 @@ class Chronical(object):
     
     pass
 class Brainpower(Chronical):
-    """脑力歌词"""
+    """
+        cambot.brainpower.Brainpower
+        O-oooooooooo AAAAE-A-A-I-A-U- 
+        JO-oooooooooooo AAE-O-A-A-U-U-A- 
+        E-eee-ee-eee AAAAE-A-E-I-E-A-
+        JO-ooo-oo-oo-oo EEEEO-A-AAA-AAAA(雾)"
+    """
     brainpower       = [
         "adrenaline","is","pumping","adrenaline","is","pumping",
         "generator","automatic","power",
@@ -30,18 +36,19 @@ class Brainpower(Chronical):
         "innovator","kill","machine","there",
         "is","no","fate","take","control","Brainpower",
         "let","the","bass","kick"]
-    """脑力副歌"""
+    """脑力歌词"""
     brainpowerCore   = "O-oooooooooo AAAAE-A-A-I-A-U- JO-oooooooooooo AAE-O-A-A-U-U-A- E-eee-ee-eee AAAAE-A-E-I-E-A-JO-ooo-oo-oo-oo EEEEO-A-AAA-AAAA"
+    """脑力副歌"""
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         super().method.append("Brainpower")
-        logger.log("Cambot.Brainpower initialized")
+        Logger.logger.log("Cambot.Brainpower initialized")
         
     def listen(self):
         pass
 
 def __init__():
-    reg = ["/brainpower","::text"]
+    reg = ["/brainpower","::text"] #预计要让上层程序读取
     print("Imported {}")
 
 if __name__ == "__main__":

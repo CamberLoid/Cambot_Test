@@ -1,0 +1,8 @@
+{
+    "python.linting.pylintEnabled": true,
+    "python.autoComplete.extraPaths": [
+        ".",
+        "./cambot",
+        "./telepot-master",
+        "./telepot-master/telepot"]
+}

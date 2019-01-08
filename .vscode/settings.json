@@ -1,9 +1,8 @@
 {
     "python.linting.pylintEnabled": true,
     "python.autoComplete.extraPaths": [
-        ".",
-        "./cambot",
-        "./telepot-master",
-        "./telepot-master/telepot"]
         "C:/Users/duodu/Documents/Cambot_Test/telepot-master",
+        "C:/Users/duodu/Documents/Cambot_Test/telepot-master/cambot",
+        "C:/Users/duodu/Documents/Cambot_Test/telepot-master/telepot-master",
+        "C:/Users/duodu/Documents/Cambot_Test/telepot-master/telepot-master/telepot"]
 }

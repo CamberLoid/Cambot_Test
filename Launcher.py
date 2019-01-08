@@ -25,31 +25,43 @@
 import os
 import sys
 #初始化导入
-sys.path.append('.\\telepot-master')
-sys.path.append('.')
+#sys.path.append('.\\telepot-master')
+#sys.path.append('.')
 import telepot
 import telepot.aio
+from telepot.aio.loop import MessageLoop
 import time,threading,asyncio
 from cambot import *
+import Logger
 
 def theWorldTheEndingTheUltimateAnswer():
     pass
 
-def importmod():
+def importmod(dictionary):
+    """
+    <TODO>
+    """
     pass
 
-def messagehandle(msg):
+def messagehandler(msg):
     content_type, chat_type, chat_id = telepot.glance(msg)
+    print()
     pass
+
 async def runBot(bots):
     await asyncio.wait(1)
+importmod(dictionary="cambot")
 token = sys.argv[1:]
-if token.count is 0:
-    token.append("714345613:AAGbEL0LhzXakqfqkmEyggvMOO8ZVHwT87g")
-#个人测试用token,发布时移除
+if len(token) is 0:
+    token.append("714345613:AAGbEL0LhzXakqfqkmEyggvMOO8ZVHwT87g") #个人测试用token,发布时移除
 bot = []
 for i in token:
-    bot.append(telepot.Bot(i))
-
-while True:
-    time.sleep(1)
+    bot.append(telepot.aio.Bot(i))
+Logger.logger.log(len(bot))
+loop = asyncio.get_event_loop()
+for bots in bot:
+    Logger.logger.log("{}".format(bots.getMe()))
+for bots in bot:
+    loop.create_task(MessageLoop(bots,messagehandler).run_forever())
+Logger.logger.log("Engaged Cambot")
+loop.run_forever()

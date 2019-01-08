@@ -1,12 +1,13 @@
 import sys
 import time
 import os
+class WritableException(Exception):
+    pass
 """
     Cambot Logger
 """
 class logger:
-    class WritableException(Exception):
-        pass
+    @classmethod
     def logToFile(self,message,file="Launcher.log"):
         with open(file,"a") as f:
             if not f.writable:
@@ -14,8 +15,9 @@ class logger:
             f.write(message)
     """
     Logger For Cambot
-    """       
-    def log(self,msg,mod=None,file=None):
+    """
+    @classmethod       
+    def log(cls,msg,mod=None,file=None):
         isValidFile=True
         output = "[{}:{}:{}] {}"
         t = time.gmtime()
@@ -25,9 +27,9 @@ class logger:
         try:
             if mod == 'f' or 'file':
                 if file==None:
-                    logToFile(msg,file)
+                    cls.logToFile(msg,file)
         except WritableException:
-            log("Error ["+msg+"] Cannot be written ./to Launcher.log, falling to console log")
+            print("Error ["+msg+"] Cannot be written ./to Launcher.log, falling to console log")
             isValidFile=False
         finally:
             return

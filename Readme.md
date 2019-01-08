@@ -5,7 +5,9 @@
 Bot在建，还没写完
 
 不想写
-逻辑：
+
+大概的逻辑：
+
 ```
 group -> `/brainpower` #群组脑力合唱
         ->随机发送brainpowerCore/"Are you rea-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-"后接合唱

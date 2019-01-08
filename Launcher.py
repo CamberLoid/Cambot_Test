@@ -11,7 +11,7 @@
 """
 """ 1.   使用的模组
          telepot.Bot, 
-         暂时没有delegate 因为看不懂
+         ~~暂时没有delegate 因为看不懂~~ delegate -> 委托，针对某用户/群组/频道
     2.   我想让这个bot做什么？
     2.1. 合唱脑力 /brainpower 或者 自动合唱
     2.2. MUG杀人登记+图像处理库 +
@@ -20,6 +20,7 @@
 """
 #个人纪录
 #Router -> 映射指令到函数
+#动态import -> importlib
 
 import os
 import sys
@@ -33,7 +34,11 @@ import Logger
 def theWorldTheEndingTheUltimateAnswer():
     pass
 
+def importmod():
+    pass
+
 def messagehandle(msg):
+    content_type, chat_type, chat_id = telepot.glance(msg)
     pass
 modules = []
 modules.append(cambot.brainpower())

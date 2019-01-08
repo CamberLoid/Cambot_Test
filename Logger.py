@@ -5,12 +5,12 @@ import os
     Cambot Logger
 """
 class logger:
-    class WritableException(BaseException):
+    class WritableException(Exception):
         pass
     def logToFile(self,message,file="Launcher.log"):
         with open(file,"a") as f:
             if not f.writable:
-                raise Exception
+                raise WritableException
             f.write(message)
     """
     Logger For Cambot
@@ -26,7 +26,7 @@ class logger:
             if mod == 'f' or 'file':
                 if file==None:
                     logToFile(msg,file)
-        except Exception:
+        except WritableException:
             log("Error ["+msg+"] Cannot be written ./to Launcher.log, falling to console log")
             isValidFile=False
         finally:

@@ -45,4 +45,4 @@ def __init__():
     print("Imported {}")
 
 if __name__ == "__main__":
-    print("This package is for import\n")
+    pass

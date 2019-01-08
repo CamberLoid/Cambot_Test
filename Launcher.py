@@ -9,12 +9,18 @@
     Killbot
     Cambot-Launcher
 """
-"""
+""" 1.   使用的模组
+         telepot.Bot, 
+         暂时没有delegate 因为看不懂
     2.   我想让这个bot做什么？
     2.1. 合唱脑力 /brainpower 或者 自动合唱
     2.2. MUG杀人登记+图像处理库 +
     2.3. <TODO>改写为异步处理
+    3.   可能会自己写个wrapper/或者自己基于需求调用api
 """
+#个人纪录
+#Router -> 映射指令到函数
+
 import os
 import sys
 #初始化导入
@@ -25,7 +31,7 @@ from cambot import *
 import Logger
 
 def theWorldTheEndingTheUltimateAnswer():
-    return 
+    pass
 
 def messagehandle(msg):
     pass

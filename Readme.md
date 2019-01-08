@@ -16,10 +16,12 @@ private -> `/brainpower` 返回 `单人脑力多没有意思 去群组里发/bri
            :Picture:
            -> 对指定的区域ocr识别分数/成绩/id
               保存为`{}`
-           预期实现的数据结构为
-           TelegramID - game - title:str
+           预期实现的数据结构为(class/json)
+           TelegramID - id:int
+                      - usrname:str # 随杀人记录请求向telegram请求更新
+                      - game - title:str
                              - isFC()
-                             - @abstract isKilled() #视游戏而定
+                             - @abstract isKilled() # 视游戏而定
                       - example:Arcaea - gameID:str
                                        - pure:int
                                        - far:int

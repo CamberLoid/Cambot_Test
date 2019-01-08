@@ -27,9 +27,10 @@ import sys
 #初始化导入
 sys.path.append('.\\telepot-master')
 sys.path.append('.')
-import telepot,telepot.aio,time,threading
+import telepot
+import telepot.aio
+import time,threading,asyncio
 from cambot import *
-import Logger
 
 def theWorldTheEndingTheUltimateAnswer():
     pass
@@ -40,11 +41,11 @@ def importmod():
 def messagehandle(msg):
     content_type, chat_type, chat_id = telepot.glance(msg)
     pass
-modules = []
-modules.append(cambot.brainpower())
-
-token = []
-token.append("714345613:AAGbEL0LhzXakqfqkmEyggvMOO8ZVHwT87g")
+async def runBot(bots):
+    await asyncio.wait(1)
+token = sys.argv[1:]
+if token.count is 0:
+    token.append("714345613:AAGbEL0LhzXakqfqkmEyggvMOO8ZVHwT87g")
 #个人测试用token,发布时移除
 bot = []
 for i in token:

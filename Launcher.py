@@ -21,19 +21,21 @@
     3.   可能会自己写个wrapper/或者自己基于需求调用api
 """
 #个人纪录
-#Router -> 映射指令到函数
-#动态import -> importlib
+#Router -> 映射指令到函数 用不到
+#动态import -> importlib 大概用不到
 
+#系统库导入
 import os
 import sys
-#初始化导入
+import time,threading,asyncio
 #sys.path.append('.\\telepot-master')
 #sys.path.append('.')
+#telepot模块导入
 import telepot,telepot.aio,telepot.namedtuple
 from telepot.aio.loop import MessageLoop
-import time,threading,asyncio
+#cambot导入
 import cambot
-from cambot import generalhandler as handle
+#from cambot import generalhandler as handle #暂时用不上
 from cambot.utils import Logger
 
 def theWorldTheEndingTheUltimateAnswer():

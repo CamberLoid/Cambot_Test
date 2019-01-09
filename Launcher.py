@@ -58,34 +58,35 @@ activatedCommands = {"brainpower":"brainpower","study":"updatefile",
                     "register":"killMachine","":""}
 """
     dict:activatedCommands
-    str:command : func
+    str(command) : func
     <TODO> 把硬编码改了
 """
-def commandHandler(command,msg):
+async def commandHandler(command,msg):
     """
     """
-
     if command is not list:
         return []
-
     if command[0].lower == 'brainpower':
+        Logger.logger.log("Received Brainpower Command")
         session[msg.chat.id] = cambot.brainpower.Brainpower()
     if command[0].lower == 'register':
+        Logger.logger.log("Received killMachine Command in {}".format(msg.chat.title))
         if msg.chat.id >0: #个人对话
             pass
         else: #群组
             pass
         pass
-    if command[]
-    
+    if command[0].lower == 'show':
+        pass
     pass
 
-def messagehandler(msg):
+async def messagehandler(msg):
     content_type, chat_type, chat_id = telepot.glance(msg)
     _msg = telepot.namedtuple.Message(**msg)
     if _msg.text is not None:
+        
         if _msg.text[0] is '/':
-            replymessage = commandHandler(_msg.text[1:].split(' '),_msg)
+            replymessage = await commandHandler(_msg.text[1:].split(' '),_msg)
 
 importmod(direction="cambot")
 token = sys.argv[1:]

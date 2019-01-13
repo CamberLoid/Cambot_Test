@@ -2,11 +2,16 @@
 """
     做什么？
     合唱脑力啊
+
+    想出来了！！！！！！
+    一个函数不断判断是否有符合条件的更新 发现就return true
+    另一个函数await 没有return true 超时则Exception
 """
 import sys,asyncio,async_timeout
 from cambot.utils import Logger
 import telepot,telepot.aio,telepot.namedtuple
 from telepot.aio.loop import MessageLoop
+import random
 
 class Chronical(object):
     """
@@ -16,12 +21,11 @@ class Chronical(object):
     """
     method = []
     def __init__(self, title, bot, *args, **kwargs):
+        chronicalPool = [] #等待处理队列 用于判断超时什么的
         self._begin="{} 看起来有人合唱{} 本Bot也要来~~~".format("啊啦?",title)
         self._break="{} 没有人合唱了吗，好寂寞QAQ"
-        
-    
     pass
-class Brainpower(Chronical):
+class brainpower(Chronical):
     """
         cambot.brainpower.Brainpower
 
@@ -46,30 +50,16 @@ class Brainpower(Chronical):
     """脑力副歌"""
     def __init__(self, bot, *args, **kwargs):
         super().__init__("脑力",bot,*args, **kwargs)
-
+        mode = random.choice([self.brainpowerBegin]+
+                              self.brainpower+
+                             [self.brainpowerCore])
         Logger.logger.log("Cambot.Brainpower initialized")
-        
-    def listen(self):
-        pass
-    async def timeout(self,curiter):
-        try:    
-            while 1:
-                if self._get.lower..split(' ') 
-                    return
-                else:
-
-        except asyncio.
-            pass
-    async def updateStatus(parameter_list):
-        try:
-            await asyncio.wait_for(timeout,)
-        except asyncio.TimeoutError:
-
     
+    def 
 
-def __init__():
-    reg = ["/brainpower","::text"] #预计要让上层程序读取
-    print("Imported {}")
 
-if __name__ == "__main__":
+"""
+    <TODO>蛮记录下模块化的理解
+    大概是每个模块创建一个同名实例？
     pass
+"""

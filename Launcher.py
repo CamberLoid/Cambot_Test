@@ -28,28 +28,21 @@
 import os
 import sys
 import time,threading,asyncio
-#sys.path.append('.\\telepot-master')
-#sys.path.append('.')
+
 #telepot模块导入
-import telepot,telepot.aio,telepot.namedtuple
+import telepot, telepot.aio, telepot.namedtuple
 from telepot.aio.loop import MessageLoop
+
 #cambot导入
-import cambot
 #from cambot import generalhandler as handle #暂时用不上
 from cambot.utils import Logger
 
 def theWorldTheEndingTheUltimateAnswer():
     return 16
-    
-def importmod(direction):
-    """
-    <TODO>
-    """
-    pass
 
-session = {}
+sessionPool = {}
 """
-    dict:session
+    dict:sessionPool
     预期配对: id : instance 
     大概只会在脑力上面用到 =v=
 """
@@ -61,48 +54,37 @@ activatedCommands = {"brainpower":"brainpower","study":"updatefile",
     str(command) : func
     <TODO> 把硬编码改了
 """
-async def commandHandler(command,msg):
-    """
-    """
-    if command is not list:
-        return []
-    if command[0].lower == 'brainpower':
-        Logger.logger.log("Received Brainpower Command")
-        session[msg.chat.id] = cambot.brainpower.Brainpower()
-    if command[0].lower == 'register':
-        Logger.logger.log("Received killMachine Command in {}".format(msg.chat.title))
-        if msg.chat.id >0: #个人对话
-            pass
-        else: #群组
-            pass
+TUser = []
+"""
+"""
+      
+async def updateModule(user_id,msg):
+    replymsg = []
+    if user_id in TUser:
         pass
-    if command[0].lower == 'show':
+    else:
+        Logger.logger.log("Warning::User ID {} is Trying to Access Modulefile")
         pass
-    pass
 
+isChecked = False
 async def messagehandler(msg):
-    content_type, chat_type, chat_id = telepot.glance(msg)
-    _msg = telepot.namedtuple.Message(**msg)
-    if _msg.text is not None:
-        
-        if _msg.text[0] is '/':
-            replymessage = await commandHandler(_msg.text[1:].split(' '),_msg)
+    flavor=telepot.flavor(msg)
+    content_type, chat_type, chat_id = telepot.glance(msg,flavor=flavor)
+    if not isChecked:
+        isChecked = True
+        t = bot[0].getMe()
+        Logger.logger.log("{}".format())
+    _msg = telepot.namedtuple.Message(**msg) #**->dict
+    if content_type == 'file':
+        pass
 
-importmod(direction="cambot")
-token = sys.argv[1:]
-
-if len(token) is 0:
-    token.append("714345613:AAGbEL0LhzXakqfqkmEyggvMOO8ZVHwT87g") 
-    #个人测试用token,因为已经Expired所以保留,要用的话自己删掉
-
+token = sys.argv[1]
 bot = []
 for i in token:
     bot.append(telepot.aio.Bot(i))
 Logger.logger.log(len(bot))
 loop = asyncio.get_event_loop()
 
-for bots in bot:
-    Logger.logger.log("{}".format(bots.getMe()))
 for bots in bot:
     loop.create_task(MessageLoop(bots,messagehandler).run_forever())
 

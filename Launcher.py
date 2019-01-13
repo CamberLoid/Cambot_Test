@@ -10,9 +10,7 @@
     Cambot-Launcher
     你见到的每一个pass 都是我的下一个todo
 """
-""" 1.   使用的模组
-         telepot.Bot, 
-         ~~暂时没有delegate 因为看不懂~~ delegate -> 委托，针对某用户/群组/频道
+""" 1.   这个bot不用委托的
     2.   我想让这个bot做什么？
     2.1. 合唱脑力 /brainpower 或者 自动合唱
     2.2. MUG杀人登记+图像处理库 +
@@ -47,13 +45,6 @@ sessionPool = {}
     大概只会在脑力上面用到 =v=
 """
 
-activatedCommands = {"brainpower":"brainpower","study":"updatefile",
-                    "register":"killMachine","":""}
-"""
-    dict:activatedCommands
-    str(command) : func
-    <TODO> 把硬编码改了
-"""
 TUser = []
 """
 """
@@ -70,23 +61,15 @@ isChecked = False
 async def messagehandler(msg):
     flavor=telepot.flavor(msg)
     content_type, chat_type, chat_id = telepot.glance(msg,flavor=flavor)
-    if not isChecked:
-        isChecked = True
-        t = bot[0].getMe()
-        Logger.logger.log("{}".format())
-    _msg = telepot.namedtuple.Message(**msg) #**->dict
+    _msg = telepot.namedtuple.Message(**msg) #namedtuple
     if content_type == 'file':
         pass
 
 token = sys.argv[1]
-bot = []
-for i in token:
-    bot.append(telepot.aio.Bot(i))
-Logger.logger.log(len(bot))
+bot = telepot.aio.Bot(token)
+#Logger.logger.log()
 loop = asyncio.get_event_loop()
+loop.create_task(MessageLoop(bot,messagehandler).run_forever())
 
-for bots in bot:
-    loop.create_task(MessageLoop(bots,messagehandler).run_forever())
-
-Logger.logger.log("Engaged Cambot")
+Logger.logger.log("Cambot Initialized")
 loop.run_forever()

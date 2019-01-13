@@ -9,7 +9,7 @@ from PIL import Image
 from io import BytesIO
 from pprint import pprint
 import collections
-async def analyze(imagePath, subscription_key, language='unk'):
+async def analyzeLocal(imagePath, subscription_key, language='unk'):
     #Azure的ocr api逻辑
     azureVisionURL = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/"
     ocrURL = azureVisionURL + "ocr"
@@ -28,7 +28,26 @@ async def analyze(imagePath, subscription_key, language='unk'):
         pprint(analysis)
         #自己写的判断
         pass
-    
+
+async def analyzeURL(imageURL, subscription_key, language='unk'):
+    #Azure的ocr api逻辑 ver URL
+    azureVisionURL = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/"
+    ocrURL = azureVisionURL + "ocr"
+    headers = {'Ocp-Apim-Subscription-Key': subscription_key,
+               'Content-Type': 'application/json'}
+    params  = {'language': language}
+    response = requests.post(
+        ocrURL, headers=headers, params=params, json={'url':imageURL})
+    try:
+        response.raise_for_status()
+    except:
+        pass
+    analysis = response.json()
+    pprint(analysis)
+
+def jsonHandle():
+    #主逻辑
+    pass
 """
     IiEST -> BEST
     SCORC,SCORES -> SCORE

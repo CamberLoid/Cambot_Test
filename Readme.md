@@ -1,8 +1,13 @@
+<div style="color:red;font-size:150%">
+[Archived due to the following reason] 工具拱拱二代目已经好了<br>
+See [Camberloid/bionicCamber](GitHub.com/Camberloid/bionicCamber) instead.
+</div>
+
 # Cambot&Cambot_launcher prototype
 
 基于telepot的telegram bot，可能会往CQ拓展
 
-Bot在建，还没写完
+~~Bot在建，还没写完~~
 
 总之就是不太想写
 
